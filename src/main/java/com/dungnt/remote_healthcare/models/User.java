@@ -1,6 +1,9 @@
 package com.dungnt.remote_healthcare.models;
 
-import lombok.*;
+import jakarta.validation.constraints.Size;
+import lombok.Getter;
+import lombok.NoArgsConstructor;
+import lombok.Setter;
 import org.bson.types.ObjectId;
 import org.springframework.data.annotation.Id;
 import org.springframework.data.mongodb.core.mapping.Document;
@@ -17,6 +20,7 @@ public class User {
     private ObjectId _id;
     private String fullName;
     private String email;
+    @Size(min = 6, message = "INSECURE_PASSWORD")
     private String password;
     @Field("mobile")
     private String phoneNumber;

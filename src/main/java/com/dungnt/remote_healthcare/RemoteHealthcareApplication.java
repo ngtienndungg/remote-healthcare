@@ -1,4 +1,4 @@
-package com.example.remote_healthcare;
+package com.dungnt.remote_healthcare;
 
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;

@@ -1,4 +1,4 @@
-package com.example.remote_healthcare;
+package com.dungnt.remote_healthcare;
 
 import org.junit.jupiter.api.Test;
 import org.springframework.boot.test.context.SpringBootTest;

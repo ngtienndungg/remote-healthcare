@@ -1,6 +1,8 @@
-package com.dungnt.remote_healthcare.models;
+package com.dungnt.remote_healthcare.entity;
 
 import lombok.*;
+import lombok.experimental.FieldDefaults;
+import org.bson.types.ObjectId;
 import org.springframework.data.annotation.Id;
 import org.springframework.data.mongodb.core.mapping.Document;
 import org.springframework.data.mongodb.core.mapping.Field;
@@ -8,18 +10,20 @@ import org.springframework.data.mongodb.core.mapping.Field;
 import java.util.List;
 
 @NoArgsConstructor
-@Getter
-@Setter
+@AllArgsConstructor
+@Data
+@Builder
+@FieldDefaults(level = AccessLevel.PRIVATE)
 @Document(collection = "doctors")
 public class Doctor {
     @Id
-    private String id;
+    ObjectId _id;
     @Field(name = "clinicID")
-    private Clinic clinic;
-    private String description;
+    Clinic clinic;
+    String description;
     @Field(name = "specialtyID")
-    private Specialty specialty;
-    private String position;
-    private List<Rating> ratings;
-    private Integer totalRatings;
+    Specialty specialty;
+    String position;
+    List<Rating> ratings;
+    Integer totalRatings;
 }

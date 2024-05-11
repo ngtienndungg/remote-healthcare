@@ -1,16 +1,17 @@
 package com.dungnt.remote_healthcare.dto.request;
 
 import com.fasterxml.jackson.annotation.JsonInclude;
-import lombok.Getter;
+import lombok.AccessLevel;
+import lombok.Data;
 import lombok.NoArgsConstructor;
-import lombok.Setter;
+import lombok.experimental.FieldDefaults;
 
-@Setter
-@Getter
 @NoArgsConstructor
+@Data
+@FieldDefaults(level = AccessLevel.PRIVATE)
 @JsonInclude(JsonInclude.Include.NON_NULL)
 public class ApiResponse<T> {
-    private int code = 200;
-    private String message;
-    private T result;
+    int code = 200;
+    String message;
+    T result;
 }

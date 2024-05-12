@@ -7,7 +7,6 @@ import com.dungnt.remote_healthcare.repository.UserRepository;
 import lombok.AccessLevel;
 import lombok.RequiredArgsConstructor;
 import lombok.experimental.FieldDefaults;
-import org.bson.types.ObjectId;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
@@ -25,7 +24,7 @@ public class UserService {
         return userMapper.toUserResponses(users);
     }
 
-    public UserResponse getUserById(ObjectId _id) {
+    public UserResponse getUserById(String _id) {
         User user = userRepository.findBy_id(_id);
         return userMapper.toUserResponse(user);
     }

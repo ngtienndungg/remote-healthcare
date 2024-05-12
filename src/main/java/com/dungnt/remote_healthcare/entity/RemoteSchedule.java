@@ -4,7 +4,6 @@ import lombok.AccessLevel;
 import lombok.Data;
 import lombok.NoArgsConstructor;
 import lombok.experimental.FieldDefaults;
-import org.bson.types.ObjectId;
 import org.springframework.data.annotation.Id;
 import org.springframework.data.mongodb.core.mapping.Document;
 
@@ -14,7 +13,7 @@ import org.springframework.data.mongodb.core.mapping.Document;
 @Document(collection = "remoteSchedule")
 public class RemoteSchedule {
     @Id
-    ObjectId _id;
+    String _id;
     Doctor doctor;
     Long price;
 }

@@ -4,7 +4,6 @@ import lombok.AccessLevel;
 import lombok.Data;
 import lombok.NoArgsConstructor;
 import lombok.experimental.FieldDefaults;
-import org.bson.types.ObjectId;
 import org.springframework.data.annotation.Id;
 import org.springframework.data.mongodb.core.mapping.Document;
 
@@ -14,6 +13,6 @@ import org.springframework.data.mongodb.core.mapping.Document;
 @Document(collection = "specialties")
 public class Specialty {
     @Id
-    ObjectId _id;
+    String _id;
     String name;
 }

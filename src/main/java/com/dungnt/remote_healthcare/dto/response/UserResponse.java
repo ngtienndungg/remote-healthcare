@@ -2,8 +2,6 @@ package com.dungnt.remote_healthcare.dto.response;
 
 import lombok.*;
 import lombok.experimental.FieldDefaults;
-import org.bson.types.ObjectId;
-import org.springframework.data.mongodb.core.mapping.Field;
 
 @NoArgsConstructor
 @AllArgsConstructor
@@ -11,12 +9,11 @@ import org.springframework.data.mongodb.core.mapping.Field;
 @Builder
 @FieldDefaults(level = AccessLevel.PRIVATE)
 public class UserResponse {
-    ObjectId _id;
+    String _id;
     String fullName;
     String email;
     String password;
-    @Field("mobile")
-    String phoneNumber;
+    String mobile;
     Integer role;
     String address;
     Boolean isBlocked;

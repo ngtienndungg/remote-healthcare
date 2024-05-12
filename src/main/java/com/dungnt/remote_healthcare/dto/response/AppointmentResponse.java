@@ -1,10 +1,9 @@
-package com.dungnt.remote_healthcare.entity;
+package com.dungnt.remote_healthcare.dto.response;
 
+import com.dungnt.remote_healthcare.entity.Schedule;
+import com.dungnt.remote_healthcare.entity.User;
 import lombok.*;
 import lombok.experimental.FieldDefaults;
-import org.springframework.data.annotation.Id;
-import org.springframework.data.annotation.Reference;
-import org.springframework.data.mongodb.core.mapping.Document;
 
 import java.util.List;
 
@@ -13,15 +12,11 @@ import java.util.List;
 @Data
 @Builder
 @FieldDefaults(level = AccessLevel.PRIVATE)
-@Document(collection = "bookings")
-public class Appointment {
-    @Id
+public class AppointmentResponse {
     String _id;
-    @Reference
     User patientID;
     String status;
     List<String> images;
-    @Reference
     Schedule scheduleID;
     String time;
     Boolean isPaid;

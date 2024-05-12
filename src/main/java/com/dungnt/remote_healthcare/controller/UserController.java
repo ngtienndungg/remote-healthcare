@@ -6,7 +6,6 @@ import com.dungnt.remote_healthcare.service.UserService;
 import lombok.AccessLevel;
 import lombok.RequiredArgsConstructor;
 import lombok.experimental.FieldDefaults;
-import org.bson.types.ObjectId;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
@@ -20,7 +19,7 @@ public class UserController {
     UserService userService;
 
     @RequestMapping(value = "/{id}", method = RequestMethod.GET)
-    public ApiResponse<UserResponse> getContactById(@PathVariable("id") ObjectId id) {
+    public ApiResponse<UserResponse> getUserById(@PathVariable("id") String id) {
         ApiResponse<UserResponse> response = new ApiResponse<>();
         response.setResult(userService.getUserById(id));
         return response;

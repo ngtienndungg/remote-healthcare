@@ -6,6 +6,9 @@ import com.dungnt.remote_healthcare.service.AppointmentService;
 import lombok.AccessLevel;
 import lombok.RequiredArgsConstructor;
 import lombok.experimental.FieldDefaults;
+import lombok.extern.slf4j.Slf4j;
+import org.springframework.security.core.Authentication;
+import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
@@ -14,6 +17,7 @@ import java.util.List;
 @RequiredArgsConstructor
 @FieldDefaults(level = AccessLevel.PRIVATE, makeFinal = true)
 @RequestMapping("/appointment")
+@Slf4j
 public class AppointmentController {
     AppointmentService appointmentService;
 
@@ -24,7 +28,10 @@ public class AppointmentController {
     }
 
     @GetMapping
-    public ApiResponse<List<AppointmentResponse>> getUsers() {
+    public ApiResponse<List<AppointmentResponse>> getAppointments() {
+        Authentication nauthentication = SecurityContextHolder.getContext().getAuthentication();
+        log.info(nauthentication.getName());
+        log.info(nauthentication.getAuthorities().toString());
         return ApiResponse.<List<AppointmentResponse>>builder()
                 .result(appointmentService.getAppointments()).build();
     }

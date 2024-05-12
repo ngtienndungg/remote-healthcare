@@ -1,6 +1,6 @@
 package com.dungnt.remote_healthcare.controller;
 
-import com.dungnt.remote_healthcare.dto.request.ApiResponse;
+import com.dungnt.remote_healthcare.dto.response.ApiResponse;
 import com.dungnt.remote_healthcare.dto.response.AppointmentResponse;
 import com.dungnt.remote_healthcare.service.AppointmentService;
 import lombok.AccessLevel;
@@ -19,15 +19,13 @@ public class AppointmentController {
 
     @RequestMapping(value = "/{id}", method = RequestMethod.GET)
     public ApiResponse<AppointmentResponse> getAppointmentById(@PathVariable("id") String id) {
-        ApiResponse<AppointmentResponse> response = new ApiResponse<>();
-        response.setResult(appointmentService.getAppointment(id));
-        return response;
+        return ApiResponse.<AppointmentResponse>builder().
+                result(appointmentService.getAppointment(id)).build();
     }
 
     @GetMapping
     public ApiResponse<List<AppointmentResponse>> getUsers() {
-        ApiResponse<List<AppointmentResponse>> response = new ApiResponse<>();
-        response.setResult(appointmentService.getAppointments());
-        return response;
+        return ApiResponse.<List<AppointmentResponse>>builder()
+                .result(appointmentService.getAppointments()).build();
     }
 }

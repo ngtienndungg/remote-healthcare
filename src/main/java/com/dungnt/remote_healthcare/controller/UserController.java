@@ -1,6 +1,6 @@
 package com.dungnt.remote_healthcare.controller;
 
-import com.dungnt.remote_healthcare.dto.request.ApiResponse;
+import com.dungnt.remote_healthcare.dto.response.ApiResponse;
 import com.dungnt.remote_healthcare.dto.response.UserResponse;
 import com.dungnt.remote_healthcare.service.UserService;
 import lombok.AccessLevel;
@@ -20,15 +20,13 @@ public class UserController {
 
     @RequestMapping(value = "/{id}", method = RequestMethod.GET)
     public ApiResponse<UserResponse> getUserById(@PathVariable("id") String id) {
-        ApiResponse<UserResponse> response = new ApiResponse<>();
-        response.setResult(userService.getUserById(id));
-        return response;
+        return ApiResponse.<UserResponse>builder()
+                .result(userService.getUserById(id)).build();
     }
 
     @GetMapping
     public ApiResponse<List<UserResponse>> getUsers() {
-        ApiResponse<List<UserResponse>> response = new ApiResponse<>();
-        response.setResult(userService.getUsers());
-        return response;
+        return ApiResponse.<List<UserResponse>>builder()
+                .result(userService.getUsers()).build();
     }
 }
